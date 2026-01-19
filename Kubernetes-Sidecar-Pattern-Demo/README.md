@@ -25,22 +25,22 @@ Kubernetes cluster (Minikube, Kind, or any K8s cluster)
 kubectl CLI tool
 Docker Hub account (or any container registry)
 Python 3.11 (for local testing, optional)
+
 🏗️ Project Structure
-bash
+
     k8s-sidecar-demo/
-    │
-    ├── app/
-    │   ├── Dockerfile           # Main Flask app container
-    │   ├── main_app.py          # Flask application code
-    │   └── requirement.txt      # Python dependencies
-    │
-    ├── sidecar/
-    │   ├── Dockerfile           # Sidecar logger container
-    │   └── logger.py            # Log tailing script
-    │
-    └── k8s/
-        ├── deployment.yml       # Kubernetes Deployment manifest
-        └── service.yml          # Kubernetes Service manifest
+          app/
+            - Dockerfile (Main Flask app container)
+            - main_app.py (Flask application code)
+            - requirement.txt (Python dependencies)
+          
+          sidecar/
+            - Dockerfile (Sidecar logger container)
+            - logger.py (Log tailing script)
+          
+          k8s/
+            - deployment.yml (Kubernetes Deployment manifest)
+            - service.yml (Kubernetes Service manifest)
 🔧 Project Explanation
 Main Application (app/main_app.py)
 The Flask application exposes a /hello endpoint that:
@@ -49,11 +49,11 @@ Receives HTTP GET requests
 Logs the timestamp and requester's IP address
 Writes logs to /logs/requests.log (shared volume)
 Returns a JSON response
-python
-# Key features:
-- Endpoint: GET /hello
-- Logging: Timestamps + IP addresses
-- Shared volume: /logs
+Key Features:
+
+Endpoint: GET /hello
+Logging: Timestamps + IP addresses
+Shared volume: /logs
 Sidecar Logger (sidecar/logger.py)
 The sidecar container:
 
