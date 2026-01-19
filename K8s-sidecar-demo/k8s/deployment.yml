@@ -1,0 +1,28 @@
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sidecar-demo
+  template:
+    metadata:
+      labels:
+        app: sidecar-demo
+    spec:
+      containers:
+        - name: main-app
+          image: <YOUR_DOCKERHUB_USERNAME>/main-flask-app:v1
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /logs
+
+        - name: sidecar-logger
+          image: <YOUR_DOCKERHUB_USERNAME>/logger-app:v1
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /logs
+
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
