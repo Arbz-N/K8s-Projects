@@ -26,7 +26,7 @@ New projects will be added **sequentially with numbering**.
 
 ---
 
-### 1. **[Kubernetes Sidecar Pattern Demo](./K8s-sidecar-demo)**  
+### 1. **[Kubernetes Sidecar Pattern Demo](Kubernetes-Sidecar-Pattern-Demo)**  
 - **Description:**  
   Demonstrates the Kubernetes **Sidecar container pattern**, where a main application container shares a volume with a sidecar container responsible for log monitoring.
 - The main app writes logs, and the sidecar continuously reads and processes them.
