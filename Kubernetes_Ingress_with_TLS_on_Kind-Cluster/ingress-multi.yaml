@@ -7,10 +7,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - usamaaslamgill.com
+    - example.com
     secretName: sec-usamaaslamgill
   rules:
-  - host: usamaaslamgill.com
+  - host: example.com
     http:
       paths:
       - pathType: Prefix
