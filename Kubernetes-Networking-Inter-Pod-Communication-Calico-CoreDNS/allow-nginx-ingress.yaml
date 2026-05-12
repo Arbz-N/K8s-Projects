@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-nginx-only
+  namespace: default
+  # Applies to the default namespace where nginx-pod1 and nginx-pod2 run.
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx
+  # This policy is enforced on every pod that carries the app=nginx label.
+  # Pods without this label are not affected by this policy's allow rule.
+
+  policyTypes:
+    - Ingress
+  # Only ingress (inbound) traffic is controlled here.
+  # Egress (outbound) traffic from nginx pods is unrestricted.
+
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: nginx
+  # Ingress is permitted only from pods that also carry app=nginx.
+  # Any pod without this label — including test-pod (busybox) — is blocked.
